@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Admission - Aariya SkillTech Academy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Aariya SkillTech Academy Logo">
+                <span>Aariya SkillTech Academy</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="verify.html" class="active">Verify Admission</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="enroll.html" class="btn-enroll">Enroll Now</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Student Verification Portal</h1>
+            <p>Verify your admission status or certificate</p>
+        </div>
+    </section>
+
+    <!-- Verification Type Selection -->
+    <section class="verification-type-section">
+        <div class="container">
+            <div class="verification-type-selector">
+                <button class="type-btn active" onclick="switchVerificationType('admission')">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Verify Admission</span>
+                </button>
+                <button class="type-btn" onclick="switchVerificationType('certificate')">
+                    <i class="fas fa-certificate"></i>
+                    <span>Verify Certificate</span>
+                </button>
+                <button class="type-btn" onclick="switchVerificationType('scholarship')">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Verify Admit Card</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Verification Section -->
+    <section class="verification-section">
+        <div class="container">
+            <!-- Admission Verification -->
+            <div class="verify-container" id="admissionVerify">
+                <div class="verify-info">
+                    <h2>Student Verification Portal</h2>
+                    <p>Welcome to our secure student verification system. This portal allows enrolled students to verify their admission status and access important information about their enrollment.</p>
+                    
+                    <div class="verify-features">
+                        <div class="verify-feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Instant Verification</h4>
+                                <p>Get immediate confirmation of your admission status</p>
+                            </div>
+                        </div>
+                        <div class="verify-feature-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <h4>Secure Access</h4>
+                                <p>Your data is protected with advanced security measures</p>
+                            </div>
+                        </div>
+                        <div class="verify-feature-item">
+                            <i class="fas fa-info-circle"></i>
+                            <div>
+                                <h4>Complete Details</h4>
+                                <p>View your course, batch, and enrollment information</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="verify-help">
+                        <h4>Need Help?</h4>
+                        <p><strong>Roll Number Format:</strong> AST-2026-XXXX</p>
+                        <p>If you don't know your roll number, please contact our admission office at <a href="mailto:aariyaskilltech@gmail.com">aariyaskilltech@gmail.com</a></p>
+                    </div>
+                </div>
+
+                <div class="verify-form-container">
+                    <form id="verifyForm" class="verify-form">
+                        <div class="form-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h3>Enter Roll Number</h3>
+                        <p>Please enter your assigned roll number below</p>
+
+                        <div class="form-group">
+                            <label for="rollNumber">Roll Number</label>
+                            <input type="text" id="rollNumber" name="rollNumber" placeholder="AST-2026-XXXX" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-search"></i> Verify Now
+                        </button>
+                    </form>
+
+                    <!-- Verification Result -->
+                    <div id="verificationResult" class="verification-result" style="display: none;">
+                        <div class="result-header">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>Verification Successful!</h3>
+                        </div>
+                        <div class="result-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Student Name:</span>
+                                <span class="detail-value" id="studentName"></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Roll Number:</span>
+                                <span class="detail-value" id="displayRollNumber"></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Course:</span>
+                                <span class="detail-value" id="courseName"></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Batch:</span>
+                                <span class="detail-value" id="batchInfo"></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Enrollment Date:</span>
+                                <span class="detail-value" id="enrollmentDate"></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Status:</span>
+                                <span class="detail-value status-active" id="statusInfo">Active</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary btn-full" onclick="resetVerification()">
+                            <i class="fas fa-redo"></i> Verify Another
+                        </button>
+                    </div>
+
+                    <!-- Error Result -->
+                    <div id="errorResult" class="verification-result error-result" style="display: none;">
+                        <div class="result-header">
+                            <i class="fas fa-times-circle"></i>
+                            <h3>Verification Failed</h3>
+                        </div>
+                        <div class="error-message">
+                            <p>The roll number you entered could not be found in our records.</p>
+                            <p>Please check your roll number and try again, or contact our admission office for assistance.</p>
+                        </div>
+                        <button class="btn btn-secondary btn-full" onclick="resetVerification()">
+                            <i class="fas fa-redo"></i> Try Again
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificate Verification -->
+            <div class="verify-container" id="certificateVerify" style="display: none;">
+                <div class="verify-info">
+                    <h2>Certificate Verification Portal</h2>
+                    <p>Verify the authenticity of certificates issued by Aariya SkillTech Academy. Enter the student's roll number and contact number to view certificate details.</p>
+                    
+                    <div class="verify-features">
+                        <div class="verify-feature-item">
+                            <i class="fas fa-certificate"></i>
+                            <div>
+                                <h4>Certificate Details</h4>
+                                <p>View complete certificate information and grade</p>
+                            </div>
+                        </div>
+                        <div class="verify-feature-item">
+                            <i class="fas fa-check-double"></i>
+                            <div>
+                                <h4>Authentic Verification</h4>
+                                <p>Confirm certificate authenticity instantly</p>
+                            </div>
+                        </div>
+                        <!-- Download option removed for students -->
+                    </div>
+
+                    <div class="verify-help">
+                        <h4>Verification Requirements</h4>
+                        <p><strong>Roll Number:</strong> AST-2026-XXXX</p>
+                        <p><strong>Contact Number:</strong> Registered mobile number</p>
+                        <p>Both details must match our records for successful verification.</p>
+                    </div>
+                </div>
+
+                <div class="verify-form-container">
+                    <form id="verifyCertForm" class="verify-form">
+                        <div class="form-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3>Verify Certificate</h3>
+                        <p>Enter roll number and contact number to verify</p>
+
+                        <div class="form-group">
+                            <label for="certRollNumber">Roll Number</label>
+                            <input type="text" id="certRollNumber" name="certRollNumber" placeholder="AST-2026-XXXX" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="certContactNumber">Contact Number</label>
+                            <input type="tel" id="certContactNumber" name="certContactNumber" placeholder="10-digit mobile number" pattern="[0-9]{10}">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-search"></i> Verify Certificate
+                        </button>
+                    </form>
+
+                    <!-- Certificate Verification Result -->
+                    <div id="certVerificationResult" class="verification-result" style="display: none;">
+                        <div class="result-header">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>Certificate Verified!</h3>
+                        </div>
+                        <div class="result-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Certificate No:</span>
+                                <span class="detail-value" id="certNumber"></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Student Name:</span>
+                                <span class="detail-value" id="certStudentName"></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Roll Number:</span>
+                                <span class="detail-value" id="certRollNo"></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Course:</span>
+                                <span class="detail-value" id="certCourse"></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Grade:</span>
+                                <span class="detail-value" id="certGrade"></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Issue Date:</span>
+                                <span class="detail-value" id="certIssueDate"></span>
+                            </div>
+                        </div>
+                        <div style="background-color: #fff3cd; padding: 12px; border-radius: 5px; margin-top: 15px; border-left: 4px solid #ffc107;">
+                            <p style="margin: 0; color: #856404; font-size: 14px;">
+                                <i class="fas fa-info-circle"></i> <strong>Note:</strong> Download/print of certificates is not available online. For a physical copy, please contact the admin office at <strong>9910481373</strong>.
+                            </p>
+                        </div>
+                        <div style="display: flex; gap: 10px; margin-top: 15px;">
+                            <button class="btn btn-secondary" onclick="resetCertVerification()" style="flex: 1;">
+                                <i class="fas fa-redo"></i> Verify Another
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Certificate Error Result -->
+                    <div id="certErrorResult" class="verification-result error-result" style="display: none;">
+                        <div class="result-header">
+                            <i class="fas fa-times-circle"></i>
+                            <h3>Verification Failed</h3>
+                        </div>
+                        <div class="error-message">
+                            <p id="certErrorMessage">Certificate not found or details don't match.</p>
+                            <p>Please check your roll number and contact number, or contact our office for assistance.</p>
+                        </div>
+                        <button class="btn btn-secondary btn-full" onclick="resetCertVerification()">
+                            <i class="fas fa-redo"></i> Try Again
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scholarship Admit Card Download -->
+            <div class="verify-container" id="scholarshipVerify" style="display: none;">
+                <div class="verify-info">
+                    <h2>Verify Scholarship Application</h2>
+                    <p>Verify your scholarship exam details by entering your serial number. Contact admin office to download your admit card.</p>
+                    
+                    <div class="verify-features">
+                        <div class="verify-feature-item">
+                            <i class="fas fa-id-card"></i>
+                            <div>
+                                <h4>Verify Details</h4>
+                                <p>Check your exam details instantly</p>
+                            </div>
+                        </div>
+                        <div class="verify-feature-item">
+                            <i class="fas fa-calendar-check"></i>
+                            <div>
+                                <h4>Exam Details</h4>
+                                <p>View exam date, time, and centre information</p>
+                            </div>
+                        </div>
+                        <div class="verify-feature-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <h4>Secure Verification</h4>
+                                <p>Instant verification with serial number</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="verify-help">
+                        <h4>Serial Number Format</h4>
+                        <p><strong>Format:</strong> SCH-2026-XXXX</p>
+                        <p>Your serial number can be found in your scholarship registration confirmation.</p>
+                    </div>
+                </div>
+
+                <div class="verify-form-container">
+                    <form id="scholarshipAdmitForm" class="verify-form">
+                        <div class="form-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Verify Application</h3>
+                        <p>Enter your scholarship serial number</p>
+
+                        <div class="form-group">
+                            <label for="scholarshipSerial">Serial Number</label>
+                            <input type="text" id="scholarshipSerial" name="scholarshipSerial" placeholder="SCH-2026-XXXX" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-search"></i> Verify Details
+                        </button>
+                    </form>
+
+                    <!-- Scholarship Result -->
+                    <div id="scholarshipResult" class="verification-result" style="display: none;">
+                        <div class="result-header">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>Verification Successful!</h3>
+                        </div>
+                        <div class="result-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Serial No:</span>
+                                <span class="detail-value" id="schSerialNo"></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Student Name:</span>
+                                <span class="detail-value" id="schStudentName"></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Exam Date:</span>
+                                <span class="detail-value" id="schExamDate"></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Exam Time:</span>
+                                <span class="detail-value" id="schExamTime"></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Exam Centre:</span>
+                                <span class="detail-value" id="schExamCentre"></span>
+                            </div>
+                        </div>
+                        <div style="background: #fef3c7; border: 2px solid #f59e0b; border-radius: 8px; padding: 15px; margin-top: 15px;">
+                            <p style="color: #92400e; margin: 0; font-size: 14px; text-align: center;">
+                                <i class="fas fa-info-circle"></i> <strong>Note:</strong> Download/print of admit cards is not available online. For a physical copy, please visit the admin office or contact: 9910481373
+                            </p>
+                        </div>
+                        <button class="btn btn-secondary btn-full" onclick="resetScholarshipVerification()" style="margin-top: 15px;">
+                            <i class="fas fa-redo"></i> Check Another
+                        </button>
+                    </div>
+
+                    <!-- Scholarship Error Result -->
+                    <div id="scholarshipErrorResult" class="verification-result error-result" style="display: none;">
+                        <div class="result-header">
+                            <i class="fas fa-times-circle"></i>
+                            <h3>Not Found</h3>
+                        </div>
+                        <div class="error-message">
+                            <p>No scholarship form found with this serial number.</p>
+                            <p>Please check your serial number or contact our office.</p>
+                        </div>
+                        <button class="btn btn-secondary btn-full" onclick="resetScholarshipVerification()">
+                            <i class="fas fa-redo"></i> Try Again
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="container">
+            <h2 class="section-title">Important Information</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-id-card"></i>
+                    <h3>Roll Number</h3>
+                    <p>Your roll number is assigned upon successful enrollment and can be found in your admission confirmation email.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Student ID Card</h3>
+                    <p>Collect your student ID card from the administration office after verification of your documents.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-book"></i>
+                    <h3>Course Materials</h3>
+                    <p>Access your course materials and schedule through the student portal after your first class.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Support</h3>
+                    <p>For any queries, contact our support team at 9910481373 or email aariyaskilltech@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Not Enrolled Yet?</h2>
+            <p>Join thousands of successful students today</p>
+            <a href="enroll.html" class="btn btn-light">Enroll Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Aariya SkillTech Academy</h3>
+                    <p>Empowering students with cutting-edge technology skills and knowledge for a successful career in IT.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="verify.html">Verify Admission</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Popular Courses</h3>
+                    <ul>
+                        <li><a href="courses.html">Web Development</a></li>
+                        <li><a href="courses.html">Data Science</a></li>
+                        <li><a href="courses.html">Python Programming</a></li>
+                        <li><a href="courses.html">Digital Marketing</a></li>
+                        <li><a href="courses.html">Cloud Computing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> FCA- 2442, 22 Feet Road, Block-B, SGM Nagar, Faridabad (HR), Zip: 121001</li>
+                        <li><i class="fas fa-phone"></i> 9910481373</li>
+                        <li><i class="fas fa-envelope"></i> aariyaskilltech@gmail.com</li>
+                        <li><i class="fas fa-clock"></i> Mon - Sat: 9AM - 9PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aariya SkillTech Academy. All Rights Reserved. | Managed by Mr. Roshan Singh</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Social Media Buttons -->
+    <div class="floating-social">
+        <a href="https://wa.me/919910481373" target="_blank" class="social-btn whatsapp" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.instagram.com/aariyaskilltech" target="_blank" class="social-btn instagram" title="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.youtube.com/@aariyaskilltech" target="_blank" class="social-btn youtube" title="YouTube">
+            <i class="fab fa-youtube"></i>
+        </a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aariya SkillTech Academy - Premier Computer Training Institute</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Aariya SkillTech Academy Logo">
+                <span>Aariya SkillTech Academy</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="verify.html">Verify Admission</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="enroll.html" class="btn-enroll">Enroll Now</a></li>
+                <li><a href="admin-login.html" title="Admin" style="color: #6b7280; font-size: 18px; opacity: 0.7; transition: all 0.3s;"><i class="fas fa-user-circle"></i></a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Slider Section -->
+    <section class="hero-slider">
+        <div class="slider-container">
+            <!-- Slide 1 -->
+            <div class="slide active">
+                <div class="slide-overlay"></div>
+                <div class="container">
+                    <div class="slide-content">
+                        <span class="slide-tag">🎓 Premier Institute</span>
+                        <h1 class="slide-title">Transform Your Future with <span class="highlight">Technology</span></h1>
+                        <p class="slide-text">Leading Computer Training Institute for Professional Excellence</p>
+                        <div class="slide-buttons">
+                            <a href="enroll.html" class="btn btn-primary">
+                                <i class="fas fa-user-graduate"></i> Enroll Now
+                            </a>
+                            <a href="courses.html" class="btn btn-secondary">
+                                <i class="fas fa-book-open"></i> Explore Courses
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slide">
+                <div class="slide-overlay"></div>
+                <div class="container">
+                    <div class="slide-content">
+                        <span class="slide-tag">💻 Advanced Learning</span>
+                        <h1 class="slide-title">Master <span class="highlight">In-Demand Skills</span> Today</h1>
+                        <p class="slide-text">Python, Java, Web Development, Data Science & More</p>
+                        <div class="slide-buttons">
+                            <a href="courses.html" class="btn btn-primary">
+                                <i class="fas fa-code"></i> View All Courses
+                            </a>
+                            <a href="verify.html" class="btn btn-secondary">
+                                <i class="fas fa-check-circle"></i> Verify Admission
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide">
+                <div class="slide-overlay"></div>
+                <div class="container">
+                    <div class="slide-content">
+                        <span class="slide-tag">🏆 Career Success</span>
+                        <h1 class="slide-title">Build Your <span class="highlight">Dream Career</span></h1>
+                        <p class="slide-text">100% Job Assistance | Industry Certification | Expert Mentorship</p>
+                        <div class="slide-buttons">
+                            <a href="about.html" class="btn btn-primary">
+                                <i class="fas fa-info-circle"></i> About Us
+                            </a>
+                            <a href="contact.html" class="btn btn-secondary">
+                                <i class="fas fa-phone-alt"></i> Contact Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide Navigation -->
+            <div class="slider-nav">
+                <button class="slider-btn prev-btn" onclick="changeSlide(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-btn next-btn" onclick="changeSlide(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Slide Indicators -->
+            <div class="slider-dots">
+                <span class="dot active" onclick="currentSlide(0)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Counter Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3 class="stat-number" data-count="5000">0</h3>
+                    <p>Students Trained</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="stat-number" data-count="50">0</h3>
+                    <p>Courses Offered</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="stat-number" data-count="95">0</h3>
+                    <p>Success Rate %</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="stat-number" data-count="100">0</h3>
+                    <p>Placement Assistance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Expert Faculty</h3>
+                    <p>Learn from industry professionals with years of practical experience</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Hands-on Training</h3>
+                    <p>Practical learning with real-world projects and case studies</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Certified Courses</h3>
+                    <p>Industry-recognized certifications to boost your career</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Placement Support</h3>
+                    <p>100% placement assistance with leading companies</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Flexible Timings</h3>
+                    <p>Weekend and evening batches available for working professionals</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Small Batch Size</h3>
+                    <p>Personal attention with limited students per batch</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Admissions Ticker -->
+    <section class="admissions-ticker">
+        <div class="container">
+            <div class="ticker-header">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Recent Admissions</span>
+            </div>
+            <div class="ticker-wrapper">
+                <div class="ticker-content" id="admissionsTicker">
+                    <!-- Students will be dynamically loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scholarship Admit Card Section -->
+    <section class="scholarship-section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">Student Verification Portal</h2>
+            
+            <div class="verification-grid">
+                <!-- Scholarship Application Verification -->
+                <div class="scholarship-box">
+                    <div class="scholarship-header">
+                        <i class="fas fa-certificate"></i>
+                        <h3>Verify Scholarship Application</h3>
+                    </div>
+                    <p class="scholarship-desc">Enter your details to verify your scholarship exam details</p>
+                    
+                    <form id="scholarshipDownloadForm" class="scholarship-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="scholarshipName">
+                                    <i class="fas fa-user"></i> Student Name
+                                </label>
+                                <input type="text" id="scholarshipName" placeholder="Enter your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="scholarshipSerial">
+                                    <i class="fas fa-barcode"></i> Serial Number
+                                </label>
+                                <input type="text" id="scholarshipSerial" placeholder="SCH-2026-XXXX" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-scholarship">
+                            <i class="fas fa-search"></i> Verify Details
+                        </button>
+                    </form>
+
+                    <div id="scholarshipResult" class="scholarship-result" style="display: none;">
+                        <div class="result-success">
+                            <i class="fas fa-check-circle"></i>
+                            <h4>Verification Successful!</h4>
+                            <p><strong>Name:</strong> <span id="verifiedName"></span></p>
+                            <p><strong>Serial No:</strong> <span id="verifiedSerial"></span></p>
+                            <p><strong>Exam Date:</strong> <span id="verifiedDate"></span></p>
+                            <p><strong>Exam Time:</strong> <span id="verifiedTime"></span></p>
+                            <p><strong>Exam Centre:</strong> <span id="verifiedCentre"></span></p>
+                            <div style="display: flex; gap: 10px; margin-top: 15px;">
+                                <button onclick="downloadScholarshipAdmitCard()" class="btn-download" style="flex: 1; background: #10b981; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                                    <i class="fas fa-download"></i> Download Admit Card
+                                </button>
+                                <button onclick="resetScholarshipForm()" class="btn-reset" style="flex: 1;">
+                                    <i class="fas fa-redo"></i> Check Another
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="scholarshipError" class="scholarship-error" style="display: none;">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p>No scholarship application found with these details. Please check and try again.</p>
+                        <button onclick="resetScholarshipForm()" class="btn-reset">
+                            <i class="fas fa-redo"></i> Try Again
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Exam Result Verification -->
+                <div class="scholarship-box">
+                    <div class="scholarship-header">
+                        <i class="fas fa-trophy"></i>
+                        <h3>Verify Exam Result</h3>
+                    </div>
+                    <p class="scholarship-desc">Enter your details to check your scholarship exam result</p>
+                    
+                    <form id="resultVerifyForm" class="scholarship-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="resultName">
+                                    <i class="fas fa-user"></i> Student Name
+                                </label>
+                                <input type="text" id="resultName" placeholder="Enter your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="resultSerial">
+                                    <i class="fas fa-barcode"></i> Serial Number
+                                </label>
+                                <input type="text" id="resultSerial" placeholder="SCH-2026-XXXX" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-scholarship">
+                            <i class="fas fa-search"></i> Check Result
+                        </button>
+                    </form>
+
+                    <div id="resultSuccess" class="scholarship-result" style="display: none;">
+                        <div class="result-success">
+                            <i class="fas fa-check-circle"></i>
+                            <h4>🎉 Congratulations! 🎉</h4>
+                            <p><strong>Name:</strong> <span id="resultVerifiedName"></span></p>
+                            <p><strong>Serial No:</strong> <span id="resultVerifiedSerial"></span></p>
+                            <p><strong>Marks:</strong> <span id="resultMarks" style="color: #3b82f6; font-weight: bold;"></span>/100</p>
+                            <p><strong>Scholarship:</strong> <span id="resultScholarship" style="color: #10b981; font-weight: bold;"></span>% Awarded</p>
+                            <p><strong>Monthly Fee:</strong> ₹<span id="resultMonthlyFee"></span></p>
+                            <p><strong>Admission Fee:</strong> ₹<span id="resultAdmissionFee"></span></p>
+                            <div style="display: flex; gap: 10px; margin-top: 15px;">
+                                <button onclick="downloadScholarshipResult()" class="btn-download" style="flex: 1; background: #10b981; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                                    <i class="fas fa-check-circle"></i> Verified
+                                </button>
+                                <button onclick="resetResultForm()" class="btn-reset" style="flex: 1;">
+                                    <i class="fas fa-redo"></i> Check Another
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="resultError" class="scholarship-error" style="display: none;">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p>No result found with these details. Result may not be declared yet or details are incorrect.</p>
+                        <button onclick="resetResultForm()" class="btn-reset">
+                            <i class="fas fa-redo"></i> Try Again
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Courses Section -->
+    <section class="popular-courses">
+        <div class="container">
+            <h2 class="section-title">Popular Courses</h2>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-img">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>DCA</h3>
+                    <p>Computer Fundamentals, MS Office, Internet</p>
+                    <div class="course-info">
+                        <span><i class="fas fa-clock"></i> 6-8 Months</span>
+                        <span><i class="fas fa-users"></i> 600+ Students</span>
+                    </div>
+                    <a href="courses.html" class="btn-small">Learn More</a>
+                </div>
+                <div class="course-card">
+                    <div class="course-img">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>ADCA</h3>
+                    <p>Advanced Computer Applications & Programming</p>
+                    <div class="course-info">
+                        <span><i class="fas fa-clock"></i> 12 Months</span>
+                        <span><i class="fas fa-users"></i> 550+ Students</span>
+                    </div>
+                    <a href="courses.html" class="btn-small">Learn More</a>
+                </div>
+                <div class="course-card">
+                    <div class="course-img">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>ADIT</h3>
+                    <p>Advanced Diploma in Information Technology</p>
+                    <div class="course-info">
+                        <span><i class="fas fa-clock"></i> 15 Months</span>
+                        <span><i class="fas fa-users"></i> 400+ Students</span>
+                    </div>
+                    <a href="courses.html" class="btn-small">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Students Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Excellent training institute! The instructors are knowledgeable and the course content is up-to-date. Got placed in a top IT company."</p>
+                    <div class="testimonial-author">
+                        <h4>Priya Sharma</h4>
+                        <span>Web Developer</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Best decision I made was joining Aariya SkillTech Academy. The practical approach to teaching really helped me understand concepts better."</p>
+                    <div class="testimonial-author">
+                        <h4>Rahul Kumar</h4>
+                        <span>Data Analyst</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Outstanding institute with great infrastructure and supportive faculty. The placement support team helped me secure a wonderful job."</p>
+                    <div class="testimonial-author">
+                        <h4>Anjali Verma</h4>
+                        <span>Software Engineer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Start Your Journey?</h2>
+            <p>Join thousands of successful students who transformed their careers</p>
+            <a href="enroll.html" class="btn btn-light">Enroll Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Aariya SkillTech Academy</h3>
+                    <p>Empowering students with cutting-edge technology skills and knowledge for a successful career in IT.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="verify.html">Verify Admission</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Popular Courses</h3>
+                    <ul>
+                        <li><a href="courses.html">Web Development</a></li>
+                        <li><a href="courses.html">Data Science</a></li>
+                        <li><a href="courses.html">Python Programming</a></li>
+                        <li><a href="courses.html">Digital Marketing</a></li>
+                        <li><a href="courses.html">Cloud Computing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> FCA- 2442, 22 Feet Road, Block-B, SGM Nagar, Faridabad (HR), Zip: 121001</li>
+                        <li><i class="fas fa-phone"></i> 9910481373</li>
+                        <li><i class="fas fa-envelope"></i> aariyaskilltech@gmail.com</li>
+                        <li><i class="fas fa-clock"></i> Mon - Sat: 9AM - 9PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aariya SkillTech Academy. All Rights Reserved. | Managed by Mr. Roshan Singh</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Social Media Buttons -->
+    <div class="floating-social">
+        <a href="https://wa.me/919910481373" target="_blank" class="social-btn whatsapp" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.instagram.com/aariyaskilltech" target="_blank" class="social-btn instagram" title="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.youtube.com/@aariyaskilltech" target="_blank" class="social-btn youtube" title="YouTube">
+            <i class="fab fa-youtube"></i>
+        </a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Aariya SkillTech Academy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="admin-styles.css">
+</head>
+<body>
+    <!-- Admin Navigation -->
+    <nav class="admin-navbar">
+        <div class="admin-nav-container">
+            <div class="admin-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Admin Panel</span>
+            </div>
+            <div class="admin-user">
+                <span>Welcome, <strong>Admin</strong></span>
+                <button id="logoutBtn" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <ul class="sidebar-menu">
+                <li class="menu-item active" data-section="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </li>
+                <li class="menu-item" data-section="students">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Students</span>
+                </li>
+                <li class="menu-item" data-section="add-student">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Add Student</span>
+                </li>
+                <li class="menu-item" data-section="courses">
+                    <i class="fas fa-book"></i>
+                    <span>Courses</span>
+                </li>
+                <li class="menu-item" data-section="certificates">
+                    <i class="fas fa-certificate"></i>
+                    <span>Certificates</span>
+                </li>
+                <li class="menu-item" data-section="scholarship">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Scholarship Forms</span>
+                </li>
+                <li class="menu-item" data-section="scholarship-results">
+                    <i class="fas fa-trophy"></i>
+                    <span>Scholarship Results</span>
+                </li>
+                <li class="menu-item" data-section="enrollment-requests">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Enrollment Requests</span>
+                </li>
+                <li class="menu-item" data-section="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="admin-section active">
+                <h1 class="section-title">Dashboard Overview</h1>
+                
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalStudents">0</h3>
+                            <p>Total Students</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalCourses">13</h3>
+                            <p>Active Courses</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="activeStudents">0</h3>
+                            <p>Active Students</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+                            <i class="fas fa-calendar-day"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="newToday">0</h3>
+                            <p>New Today</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <h2>Recent Students</h2>
+                        <div id="recentStudentsList" class="recent-list">
+                            <!-- Recent students will be loaded here -->
+                        </div>
+                    </div>
+                    <div class="dashboard-card">
+                        <h2>Quick Actions</h2>
+                        <div class="quick-actions">
+                            <button class="quick-btn" onclick="switchSection('add-student')">
+                                <i class="fas fa-user-plus"></i>
+                                Add New Student
+                            </button>
+                            <button class="quick-btn" onclick="switchSection('students')">
+                                <i class="fas fa-list"></i>
+                                View All Students
+                            </button>
+                            <button class="quick-btn" onclick="exportToExcel()">
+                                <i class="fas fa-file-excel"></i>
+                                Export to Excel
+                            </button>
+                            <button class="quick-btn" onclick="clearAllData()">
+                                <i class="fas fa-trash"></i>
+                                Clear All Data
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Students List Section -->
+            <section id="students" class="admin-section">
+                <div class="section-header">
+                    <h1 class="section-title">All Students</h1>
+                    <div class="section-actions">
+                        <input type="text" id="searchStudent" placeholder="Search by name or roll number..." class="search-input">
+                        <button onclick="switchSection('add-student')" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Add Student
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table id="studentsTable" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Roll Number</th>
+                                <th>Name</th>
+                                <th>Course</th>
+                                <th>Batch</th>
+                                <th>Phone</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsTableBody">
+                            <!-- Student rows will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Add Student Section -->
+            <section id="add-student" class="admin-section">
+                <h1 class="section-title" id="addStudentTitle">Add New Student</h1>
+                
+                <form id="addStudentForm" class="admin-form">
+                    <div class="form-section">
+                        <h3><i class="fas fa-user"></i> Personal Information</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="studentFirstName">First Name *</label>
+                                <input type="text" id="studentFirstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="studentLastName">Last Name</label>
+                                <input type="text" id="studentLastName">
+                            </div>
+                            <div class="form-group">
+                                <label for="studentEmail">Email</label>
+                                <input type="email" id="studentEmail">
+                            </div>
+                            <div class="form-group">
+                                <label for="studentPhone">Phone Number *</label>
+                                <input type="tel" id="studentPhone" pattern="[0-9]{10}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="studentDOB">Date of Birth *</label>
+                                <input type="date" id="studentDOB" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="studentGender">Gender *</label>
+                                <select id="studentGender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3><i class="fas fa-home"></i> Address Information</h3>
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label for="studentAddress">Address *</label>
+                                <textarea id="studentAddress" rows="2" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="studentCity">City *</label>
+                                <input type="text" id="studentCity" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="studentState">State *</label>
+                                <input type="text" id="studentState" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="studentPincode">PIN Code *</label>
+                                <input type="text" id="studentPincode" pattern="[0-9]{6}" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3><i class="fas fa-graduation-cap"></i> Academic Information</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="studentRollNo">Roll Number *</label>
+                                <input type="text" id="studentRollNo" placeholder="AST-2026-XXXX" required>
+                                <button type="button" onclick="generateRollNumber()" class="btn-generate">
+                                    <i class="fas fa-sync"></i> Auto Generate
+                                </button>
+                            </div>
+                            <div class="form-group">
+                                <label for="studentCourse">Course *</label>
+                                <select id="studentCourse" required>
+                                    <option value="">Select Course</option>
+                                    <option value="Office Automation with Advance (3month)">Office Automation with Advance (3month)</option>
+                                    <option value="Tally Erp 9 with GST (3month)">Tally Erp 9 with GST (3month)</option>
+                                    <option value="Tally Prime with GST (3month)">Tally Prime with GST (3month)</option>
+                                    <option value="Web Development HTML, CSS, JAVA Script (3month)">Web Development HTML, CSS, JAVA Script (3month)</option>
+                                    <option value="Photoshop (3month)">Photoshop (3month)</option>
+                                    <option value="Corel Draw (3month)">Corel Draw (3month)</option>
+                                    <option value="DCA (6-8month)">DCA (6-8month)</option>
+                                    <option value="ADCA (12month)">ADCA (12month)</option>
+                                    <option value="ADIT (15month)">ADIT (15month)</option>
+                                    <option value="CCC (6 month)">CCC (6 month)</option>
+                                    <option value="AutoCAD (3month)">AutoCAD (3month)</option>
+                                    <option value="Internet & Hardware (3month)">Internet & Hardware (3month)</option>
+                                    <option value="AI (30days)">AI (30days)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="studentBatch">Batch Time *</label>
+                                <select id="studentBatch" required>
+                                    <option value="">Select Batch</option>
+                                    <option value="Morning Batch (9 AM - 12 PM)">Morning Batch (9 AM - 12 PM)</option>
+                                    <option value="Afternoon Batch (1 PM - 4 PM)">Afternoon Batch (1 PM - 4 PM)</option>
+                                    <option value="Evening Batch (5 PM - 9 PM)">Evening Batch (5 PM - 9 PM)</option>
+                                    <option value="Weekend Batch">Weekend Batch</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="studentEnrollmentDate">Enrollment Date *</label>
+                                <input type="date" id="studentEnrollmentDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="studentQualification">Qualification *</label>
+                                <select id="studentQualification" required>
+                                    <option value="">Select Qualification</option>
+                                    <option value="10th Standard">10th Standard</option>
+                                    <option value="12th Standard">12th Standard</option>
+                                    <option value="Diploma">Diploma</option>
+                                    <option value="Bachelor's Degree">Bachelor's Degree</option>
+                                    <option value="Master's Degree">Master's Degree</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="studentStatus">Status *</label>
+                                <select id="studentStatus" required>
+                                    <option value="Active">Active</option>
+                                    <option value="Inactive">Inactive</option>
+                                    <option value="Completed">Completed</option>
+                                    <option value="Pending">Pending</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3><i class="fas fa-sticky-note"></i> Additional Notes</h3>
+                        <div class="form-group full-width">
+                            <label for="studentNotes">Notes (Optional)</label>
+                            <textarea id="studentNotes" rows="3" placeholder="Any additional information..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-large">
+                            <i class="fas fa-save"></i> Save Student
+                        </button>
+                        <button type="reset" class="btn btn-secondary btn-large">
+                            <i class="fas fa-undo"></i> Reset Form
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Courses Section -->
+            <section id="courses" class="admin-section">
+                <h1 class="section-title">Course Management</h1>
+                
+                <div class="section-header">
+                    <button class="btn-primary" onclick="openAddCourseModal()">
+                        <i class="fas fa-plus"></i> Add New Course
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Sr. No.</th>
+                                <th>Course Name</th>
+                                <th>Icon</th>
+                                <th>Duration</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="coursesTableBody">
+                            <!-- Courses will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Add/Edit Course Modal -->
+            <div id="courseModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="courseModalTitle">Add New Course</h2>
+                        <span class="close-modal" onclick="closeCourseModal()">&times;</span>
+                    </div>
+                    <form id="courseForm">
+                        <input type="hidden" id="courseId">
+                        <div class="form-group">
+                            <label for="courseName">Course Name *</label>
+                            <input type="text" id="courseName" placeholder="e.g., Python Programming" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="courseIcon">Font Awesome Icon Class *</label>
+                            <input type="text" id="courseIcon" placeholder="e.g., fab fa-python" required>
+                            <small>Visit <a href="https://fontawesome.com/icons" target="_blank">FontAwesome</a> for icons</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="courseDuration">Duration *</label>
+                            <input type="text" id="courseDuration" placeholder="e.g., 3 months" required>
+                        </div>
+                        <div class="modal-actions">
+                            <button type="button" class="btn-secondary" onclick="closeCourseModal()">Cancel</button>
+                            <button type="submit" class="btn-primary">Save Course</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Delete Course Confirmation Modal -->
+            <div id="deleteCourseModal" class="modal">
+                <div class="modal-content modal-small">
+                    <div class="modal-header">
+                        <h2>Delete Course</h2>
+                        <span class="close-modal" onclick="closeDeleteCourseModal()">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete this course?</p>
+                        <p><strong id="deleteCourseNameDisplay"></strong></p>
+                        <p class="warning-text">⚠️ This action cannot be undone!</p>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="btn-secondary" onclick="closeDeleteCourseModal()">Cancel</button>
+                        <button class="btn-danger" onclick="confirmDeleteCourse()">Delete</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificates Section -->
+            <section id="certificates" class="admin-section">
+                <h1 class="section-title">Certificate Management</h1>
+                
+                <div class="section-header">
+                    <button class="btn-primary" onclick="openIssueCertificateModal()">
+                        <i class="fas fa-certificate"></i> Issue New Certificate
+                    </button>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchCertificate" placeholder="Search certificates...">
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Certificate No.</th>
+                                <th>Student Name</th>
+                                <th>Roll Number</th>
+                                <th>Course</th>
+                                <th>Grade</th>
+                                <th>Issue Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="certificatesTableBody">
+                            <!-- Certificates will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Issue Certificate Modal -->
+            <div id="issueCertificateModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Issue Certificate</h2>
+                        <span class="close-modal" onclick="closeIssueCertificateModal()">&times;</span>
+                    </div>
+                    <form id="issueCertificateForm">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="certStudentSelect">Select Student *</label>
+                                <select id="certStudentSelect" required>
+                                    <option value="">Choose a student...</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="certCourse">Course *</label>
+                                <input type="text" id="certCourse" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="certGrade">Grade *</label>
+                                <select id="certGrade" required>
+                                    <option value="">Select Grade</option>
+                                    <option value="A+">A+ (Outstanding)</option>
+                                    <option value="A">A (Excellent)</option>
+                                    <option value="B+">B+ (Very Good)</option>
+                                    <option value="B">B (Good)</option>
+                                    <option value="C">C (Satisfactory)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="certIssueDate">Issue Date *</label>
+                                <input type="date" id="certIssueDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="certRemarks">Remarks (Optional)</label>
+                                <textarea id="certRemarks" rows="3" placeholder="Any special remarks or achievements..."></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-actions">
+                            <button type="button" class="btn-secondary" onclick="closeIssueCertificateModal()">Cancel</button>
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-certificate"></i> Issue Certificate
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Scholarship Forms Section -->
+            <section id="scholarship" class="admin-section">
+                <h1 class="section-title">Scholarship Forms Management</h1>
+                
+                <div class="section-header">
+                    <button class="btn btn-primary" onclick="openAddScholarshipModal()">
+                        <i class="fas fa-plus"></i> Add Scholarship Form
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="scholarshipSearch" placeholder="Search by name, serial no, or exam centre..." onkeyup="loadScholarshipTable(this.value)">
+                    </div>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Serial No</th>
+                                <th>Student Name</th>
+                                <th>Contact</th>
+                                <th>Exam Date</th>
+                                <th>Exam Time</th>
+                                <th>Exam Centre</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scholarshipTableBody">
+                            <tr>
+                                <td colspan="7" style="text-align: center; padding: 40px;">
+                                    <i class="fas fa-graduation-cap" style="font-size: 48px; color: #ddd; margin-bottom: 15px;"></i>
+                                    <p>No scholarship forms found. Click "Add Scholarship Form" to create one.</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Add/Edit Scholarship Modal -->
+            <div id="scholarshipModal" class="modal">
+                <div class="modal-content modal-large">
+                    <div class="modal-header">
+                        <h2>Add Scholarship Form</h2>
+                        <span class="close-modal" onclick="closeScholarshipModal()">&times;</span>
+                    </div>
+                    <form id="scholarshipForm">
+                        <div class="modal-body">
+                            <div class="form-section">
+                                <h3><i class="fas fa-user"></i> Student Information</h3>
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="schSerialNo">Serial Number *</label>
+                                        <input type="text" id="schSerialNo" placeholder="SCH-2026-XXXX" required readonly>
+                                        <button type="button" onclick="generateScholarshipSerial()" class="btn-generate">
+                                            <i class="fas fa-sync"></i> Auto Generate
+                                        </button>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="schStudentName">Full Name *</label>
+                                        <input type="text" id="schStudentName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="schFatherName">Father's Name *</label>
+                                        <input type="text" id="schFatherName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="schMotherName">Mother's Name *</label>
+                                        <input type="text" id="schMotherName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="schDOB">Date of Birth *</label>
+                                        <input type="date" id="schDOB" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="schGender">Gender *</label>
+                                        <select id="schGender" required>
+                                            <option value="">Select Gender</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="schEmail">Email</label>
+                                        <input type="email" id="schEmail">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="schPhone">Contact Number *</label>
+                                        <input type="tel" id="schPhone" pattern="[0-9]{10}" required>
+                                    </div>
+                                    <div class="form-group full-width">
+                                        <label for="schAddress">Address *</label>
+                                        <textarea id="schAddress" rows="2" required></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="schPhoto">Upload Photo *</label>
+                                        <input type="file" id="schPhoto" accept="image/*" required>
+                                        <small>Max size: 2MB (JPG, PNG)</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <div id="schPhotoPreview" style="display: none; margin-top: 10px;">
+                                            <img id="schPhotoImg" style="max-width: 150px; border-radius: 8px; border: 2px solid #e5e7eb;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <h3><i class="fas fa-clipboard-list"></i> Exam Details</h3>
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="schExamDate">Exam Date *</label>
+                                        <input type="date" id="schExamDate" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="schExamTime">Exam Time *</label>
+                                        <input type="time" id="schExamTime" required>
+                                    </div>
+                                    <div class="form-group full-width">
+                                        <label for="schExamCentre">Exam Centre *</label>
+                                        <textarea id="schExamCentre" rows="2" placeholder="Full address of exam centre" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-actions">
+                            <button type="button" class="btn-secondary" onclick="closeScholarshipModal()">Cancel</button>
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-save"></i> Save Scholarship Form
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Scholarship Results Section -->
+            <section id="scholarship-results" class="admin-section">
+                <h1 class="section-title">Scholarship Results Management</h1>
+                
+                <div class="section-header">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchScholarshipResult" placeholder="Search by name or serial number...">
+                    </div>
+                    <button class="btn-primary" onclick="openAddResultModal()">
+                        <i class="fas fa-plus"></i> Add Result
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Serial No</th>
+                                <th>Student Name</th>
+                                <th>Marks</th>
+                                <th>Scholarship %</th>
+                                <th>Monthly Fee</th>
+                                <th>Admission Fee</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scholarshipResultsTable">
+                            <tr>
+                                <td colspan="7" class="text-center">No results added yet</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Add/Edit Scholarship Result Modal -->
+            <div id="scholarshipResultModal" class="modal">
+                <div class="modal-content" style="max-width: 600px;">
+                    <div class="modal-header">
+                        <h2><i class="fas fa-trophy"></i> Add Scholarship Result</h2>
+                        <button class="close-btn" onclick="closeResultModal()">&times;</button>
+                    </div>
+                    <form id="scholarshipResultForm">
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label for="resultSerialNo">Select Student *</label>
+                                <select id="resultSerialNo" required>
+                                    <option value="">-- Select Scholarship Student --</option>
+                                </select>
+                            </div>
+
+                            <div id="studentInfoDisplay" style="display: none; background: #f0f9ff; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                                <p style="margin: 5px 0;"><strong>Name:</strong> <span id="displayName"></span></p>
+                                <p style="margin: 5px 0;"><strong>Exam Date:</strong> <span id="displayExamDate"></span></p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="resultMarks">Marks Obtained *</label>
+                                <input type="number" id="resultMarks" min="0" max="100" placeholder="e.g., 85" required>
+                                <small>Out of 100</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="resultScholarship">Scholarship % *</label>
+                                <input type="number" id="resultScholarship" min="0" max="100" placeholder="e.g., 50" required>
+                                <small>Scholarship percentage (0-100%)</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="resultMonthlyFee">Monthly Fee (₹) *</label>
+                                <input type="number" id="resultMonthlyFee" min="0" placeholder="e.g., 2000" required>
+                                <small>Per month course fee</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="resultAdmissionFee">Admission Fee (₹) *</label>
+                                <input type="number" id="resultAdmissionFee" min="0" placeholder="e.g., 5000" required>
+                                <small>One-time admission fee</small>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="resultRemarks">Remarks (Optional)</label>
+                                <textarea id="resultRemarks" rows="2" placeholder="Any additional notes..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="modal-actions">
+                            <button type="button" class="btn-secondary" onclick="closeResultModal()">Cancel</button>
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-save"></i> Save Result
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Enrollment Requests Section -->
+            <section id="enrollment-requests" class="admin-section">
+                <h1 class="section-title">Enrollment Requests</h1>
+                
+                <div class="section-header">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchEnrollment" placeholder="Search by name, roll number, or phone...">
+                    </div>
+                    <div style="margin-left: 12px;">
+                        <button class="btn btn-danger" id="clearEnrollmentBtn" onclick="clearAllEnrollmentRequests()" title="Clear all enrollment requests">Clear All</button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Roll No</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Course</th>
+                                <th>Batch Time</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="enrollmentRequestsTable">
+                            <tr>
+                                <td colspan="8" class="text-center">No enrollment requests yet</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Enrollment Details Modal -->
+            <div id="enrollmentDetailsModal" class="modal">
+                <div class="modal-content" style="max-width: 700px;">
+                    <div class="modal-header">
+                        <h2><i class="fas fa-user-graduate"></i> Enrollment Details</h2>
+                        <button class="close-btn" onclick="closeEnrollmentDetailsModal()">&times;</button>
+                    </div>
+                    <div id="enrollmentDetailsContent" style="padding: 20px;">
+                        <!-- Details will be loaded here -->
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn-secondary" onclick="closeEnrollmentDetailsModal()">Close</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <section id="settings" class="admin-section">
+                <h1 class="section-title">Settings</h1>
+                
+                <div class="settings-card">
+                    <h3><i class="fas fa-lock"></i> Change Password</h3>
+                    <form id="changePasswordForm">
+                        <div class="form-group">
+                            <label>Current Password</label>
+                            <input type="password" id="currentPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label>New Password</label>
+                            <input type="password" id="newPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm Password</label>
+                            <input type="password" id="confirmPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Update Password
+                        </button>
+                    </form>
+                </div>
+
+                <div class="settings-card">
+                    <h3><i class="fas fa-signature"></i> Director Signature</h3>
+                    <p>Upload director's signature for certificates (recommended size: 400x150px)</p>
+                    <div class="signature-preview" id="signaturePreview" style="margin: 15px 0; min-height: 100px; border: 2px dashed #ddd; border-radius: 8px; padding: 20px; text-align: center; background: #f9fafb;">
+                        <div id="signatureDisplay">
+                            <i class="fas fa-signature" style="font-size: 48px; color: #ccc;"></i>
+                            <p style="color: #6b7280; margin-top: 10px;">No signature uploaded</p>
+                        </div>
+                    </div>
+                    <div class="settings-actions">
+                        <button onclick="document.getElementById('signatureFile').click()" class="btn btn-primary">
+                            <i class="fas fa-upload"></i> Upload Signature
+                        </button>
+                        <button onclick="removeSignature()" class="btn btn-danger">
+                            <i class="fas fa-trash"></i> Remove Signature
+                        </button>
+                        <input type="file" id="signatureFile" accept="image/*" style="display: none;" onchange="uploadSignature(event)">
+                    </div>
+                </div>
+
+                <div class="settings-card">
+                    <h3><i class="fas fa-database"></i> Database Management</h3>
+                    <p>Export or import student data</p>
+                    <div class="settings-actions">
+                        <button onclick="exportToExcel()" class="btn btn-primary">
+                            <i class="fas fa-file-excel"></i> Export to Excel (.xlsx)
+                        </button>
+                        <button onclick="exportData()" class="btn btn-secondary">
+                            <i class="fas fa-download"></i> Export Data (JSON)
+                        </button>
+                        <button onclick="document.getElementById('importFile').click()" class="btn btn-secondary">
+                            <i class="fas fa-upload"></i> Import Data
+                        </button>
+                        <button onclick="clearAllData()" class="btn btn-danger">
+                            <i class="fas fa-trash-alt"></i> Clear All Data
+                        </button>
+                        <input type="file" id="importFile" accept=".json" style="display: none;" onchange="importData(event)">
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Success/Error Toast -->
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <h3><i class="fas fa-exclamation-triangle"></i> Confirm Delete</h3>
+            <p>Are you sure you want to delete this student?</p>
+            <div class="modal-actions">
+                <button onclick="closeDeleteModal()" class="btn btn-secondary">Cancel</button>
+                <button onclick="confirmDelete()" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SheetJS Library for Excel Export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="api-config.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

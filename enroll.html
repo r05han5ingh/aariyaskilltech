@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enroll Now - Aariya SkillTech Academy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Aariya SkillTech Academy Logo">
+                <span>Aariya SkillTech Academy</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="verify.html">Verify Admission</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="enroll.html" class="btn-enroll active">Enroll Now</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Enroll Now</h1>
+            <p>Start your journey to success with us today</p>
+        </div>
+    </section>
+
+    <!-- Enrollment Section -->
+    <section class="enrollment-section">
+        <div class="container">
+            <div class="enrollment-intro">
+                <h2>Begin Your Transformation</h2>
+                <p>Take the first step towards a successful career in technology. Fill out the enrollment form below and our admission team will contact you within 24 hours.</p>
+                <div class="enrollment-benefits">
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Quick Processing</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Flexible Payment Options</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Instant Confirmation</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Expert Guidance</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="enrollment-container">
+                <form id="enrollmentForm" class="enrollment-form">
+                    <h3><i class="fas fa-user"></i> Personal Information</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="dateOfBirth">Date of Birth *</label>
+                            <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <select id="gender" name="gender">
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <h3><i class="fas fa-phone"></i> Contact Information</h3>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="10 digit number" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address *</label>
+                        <textarea id="address" name="address" rows="3" required></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City *</label>
+                            <input type="text" id="city" name="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State *</label>
+                            <input type="text" id="state" name="state" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pincode">PIN Code *</label>
+                            <input type="text" id="pincode" name="pincode" pattern="[0-9]{6}" required>
+                        </div>
+                    </div>
+
+                    <h3><i class="fas fa-graduation-cap"></i> Educational Background</h3>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="qualification">Highest Qualification *</label>
+                            <select id="qualification" name="qualification" required>
+                                <option value="">Select Qualification</option>
+                                <option value="10th">10th Standard</option>
+                                <option value="12th">12th Standard</option>
+                                <option value="diploma">Diploma</option>
+                                <option value="bachelors">Bachelor's Degree</option>
+                                <option value="masters">Master's Degree</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="institute">Institute/College Name</label>
+                            <input type="text" id="institute" name="institute">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="passingYear">Year of Passing</label>
+                            <input type="number" id="passingYear" name="passingYear" min="1990" max="2026">
+                        </div>
+                        <div class="form-group">
+                            <label for="percentage">Percentage/CGPA</label>
+                            <input type="text" id="percentage" name="percentage">
+                        </div>
+                    </div>
+
+                    <h3><i class="fas fa-book"></i> Course Selection</h3>
+
+                    <div class="form-group">
+                        <label for="course">Select Course *</label>
+                        <select id="course" name="course" required>
+                            <option value="">Choose a course</option>
+                            <option value="Office Automation with Advance (3month)">Office Automation with Advance (3month)</option>
+                            <option value="Tally Erp 9 with GST (3month)">Tally Erp 9 with GST (3month)</option>
+                            <option value="Tally Prime with GST (3month)">Tally Prime with GST (3month)</option>
+                            <option value="Web Development HTML, CSS, JAVA Script (3month)">Web Development HTML, CSS, JAVA Script (3month)</option>
+                            <option value="Photoshop (3month)">Photoshop (3month)</option>
+                            <option value="Corel Draw (3month)">Corel Draw (3month)</option>
+                            <option value="DCA (6-8month)">DCA (6-8month)</option>
+                            <option value="ADCA (12month)">ADCA (12month)</option>
+                            <option value="ADIT (15month)">ADIT (15month)</option>
+                            <option value="CCC (6 month)">CCC (6 month)</option>
+                            <option value="AutoCAD (3month)">AutoCAD (3month)</option>
+                            <option value="Internet & Hardware (3month)">Internet & Hardware (3month)</option>
+                            <option value="AI (30days)">AI (30days)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="batchTime">Preferred Batch Time *</label>
+                            <select id="batchTime" name="batchTime" required>
+                                <option value="">Select Batch Time</option>
+                                <option value="morning">Morning (9:00 AM - 12:00 PM)</option>
+                                <option value="afternoon">Afternoon (1:00 PM - 4:00 PM)</option>
+                                <option value="evening">Evening (5:00 PM - 8:00 PM)</option>
+                                <option value="weekend">Weekend (Sat-Sun)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="startDate">Preferred Start Date</label>
+                            <input type="date" id="startDate" name="startDate">
+                        </div>
+                    </div>
+
+                    <h3><i class="fas fa-info-circle"></i> Additional Information</h3>
+
+                    <div class="form-group">
+                        <label for="experience">Do you have any prior programming experience?</label>
+                        <select id="experience" name="experience">
+                            <option value="no">No Experience</option>
+                            <option value="basic">Basic Knowledge</option>
+                            <option value="intermediate">Intermediate Level</option>
+                            <option value="advanced">Advanced Level</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="howHeard">How did you hear about us?</label>
+                        <select id="howHeard" name="howHeard">
+                            <option value="">Select an option</option>
+                            <option value="google">Google Search</option>
+                            <option value="social">Social Media</option>
+                            <option value="friend">Friend/Relative</option>
+                            <option value="advertisement">Advertisement</option>
+                            <option value="website">Website</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="remarks">Additional Comments/Questions</label>
+                        <textarea id="remarks" name="remarks" rows="4" placeholder="Any specific requirements or questions you want to share..."></textarea>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">I agree to the <a href="#">terms and conditions</a> and authorize Aariya SkillTech Academy to contact me *</label>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="updates" name="updates">
+                        <label for="updates">I want to receive updates about new courses and offers</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full btn-large">
+                        <i class="fas fa-paper-plane"></i> Submit Enrollment Form
+                    </button>
+
+                    <p class="form-note">* All fields marked with asterisk are mandatory</p>
+                </form>
+
+                <!-- Success Message -->
+                <div id="enrollmentSuccess" class="enrollment-success" style="display: none;">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h2>Enrollment Successful!</h2>
+                    <p>Thank you for enrolling at Aariya SkillTech Academy!</p>
+                    <div class="success-details">
+                        <p><strong>Your application has been received successfully.</strong></p>
+                        <p>Our admission team will review your application and contact you within 24 hours with further details including:</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Your unique Roll Number</li>
+                            <li><i class="fas fa-check"></i> Course fee details and payment options</li>
+                            <li><i class="fas fa-check"></i> Batch schedule and starting date</li>
+                            <li><i class="fas fa-check"></i> Required documents for admission</li>
+                        </ul>
+                        <p>A confirmation email has been sent to your registered email address.</p>
+                        <p><strong>For immediate assistance, call us at: 9910481373</strong></p>
+                    </div>
+                    <div class="success-actions">
+                        <a href="index.html" class="btn btn-secondary">Back to Home</a>
+                        <a href="courses.html" class="btn btn-primary">Explore More Courses</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Enroll Section -->
+    <section class="why-enroll">
+        <div class="container">
+            <h2 class="section-title">Why Enroll With Us?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Expert Trainers</h3>
+                    <p>Learn from industry professionals with extensive experience</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Certified Courses</h3>
+                    <p>Earn recognized certifications that boost your career</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Placement Support</h3>
+                    <p>100% placement assistance with top companies</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Hands-on Projects</h3>
+                    <p>Work on real-world projects and build your portfolio</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Flexible Timings</h3>
+                    <p>Choose from multiple batch timings that suit you</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>Lifetime Support</h3>
+                    <p>Get continued support even after course completion</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Aariya SkillTech Academy</h3>
+                    <p>Empowering students with cutting-edge technology skills and knowledge for a successful career in IT.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="verify.html">Verify Admission</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Popular Courses</h3>
+                    <ul>
+                        <li><a href="courses.html">Web Development</a></li>
+                        <li><a href="courses.html">Data Science</a></li>
+                        <li><a href="courses.html">Python Programming</a></li>
+                        <li><a href="courses.html">Digital Marketing</a></li>
+                        <li><a href="courses.html">Cloud Computing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> FCA- 2442, 22 Feet Road, Block-B, SGM Nagar, Faridabad (HR), Zip: 121001</li>
+                        <li><i class="fas fa-phone"></i> 9910481373</li>
+                        <li><i class="fas fa-envelope"></i> aariyaskilltech@gmail.com</li>
+                        <li><i class="fas fa-clock"></i> Mon - Sat: 9AM - 9PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aariya SkillTech Academy. All Rights Reserved. | Managed by Mr. Roshan Singh</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Social Media Buttons -->
+    <div class="floating-social">
+        <a href="https://wa.me/919910481373" target="_blank" class="social-btn whatsapp" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.instagram.com/aariyaskilltech" target="_blank" class="social-btn instagram" title="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.youtube.com/@aariyaskilltech" target="_blank" class="social-btn youtube" title="YouTube">
+            <i class="fab fa-youtube"></i>
+        </a>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" title="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="api-config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

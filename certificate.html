@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate of Completion</title>
+    <style>
+        @page {
+            size: A4 landscape;
+            margin: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: white;
+            padding: 0;
+            margin: 0;
+        }
+
+        .certificate-container {
+            width: 297mm;
+            height: 210mm;
+            margin: 0 auto;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Certificate Border and Background */
+        .certificate-border {
+            position: absolute;
+            top: 15mm;
+            left: 15mm;
+            right: 15mm;
+            bottom: 15mm;
+            border: 10px double #0a2540;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            box-shadow: inset 0 0 50px rgba(0, 168, 232, 0.05);
+        }
+
+        .certificate-border::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 3px solid #00a8e8;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(126, 217, 87, 0.02) 10px,
+                rgba(126, 217, 87, 0.02) 20px
+            );
+        }
+
+        /* Decorative Corner Elements */
+        .corner-decoration {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 3px solid #7ed957;
+        }
+
+        .corner-top-left {
+            top: 20mm;
+            left: 20mm;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .corner-top-right {
+            top: 20mm;
+            right: 20mm;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .corner-bottom-left {
+            bottom: 20mm;
+            left: 20mm;
+            border-right: none;
+            border-top: none;
+        }
+
+        .corner-bottom-right {
+            bottom: 20mm;
+            right: 20mm;
+            border-left: none;
+            border-top: none;
+        }
+
+        /* Certificate Content */
+        .certificate-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 25mm 30mm;
+        }
+
+        /* Logo */
+        .certificate-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 12px;
+        }
+
+        .certificate-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Institute Name */
+        .institute-name {
+            font-size: 30px;
+            font-weight: bold;
+            color: #0a2540;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .institute-tagline {
+            font-size: 12px;
+            color: #6b7280;
+            margin-bottom: 20px;
+        }
+
+        /* Certificate Title */
+        .certificate-title {
+            font-size: 40px;
+            font-weight: bold;
+            color: #00a8e8;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        .certificate-subtitle {
+            font-size: 18px;
+            color: #374151;
+            margin-bottom: 20px;
+        }
+
+        /* Student Name */
+        .student-name-label {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+
+        .student-name {
+            font-size: 34px;
+            font-weight: bold;
+            color: #0a2540;
+            border-bottom: 3px solid #7ed957;
+            display: inline-block;
+            padding: 8px 30px;
+            margin-bottom: 20px;
+        }
+
+        /* Certificate Text */
+        .certificate-text {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #374151;
+            max-width: 900px;
+            margin: 0 auto 20px;
+        }
+
+        .course-name {
+            font-weight: bold;
+            color: #0a2540;
+            font-size: 24px;
+            border-bottom: 3px solid #00a8e8;
+            padding-bottom: 2px;
+        }
+
+        .grade-text {
+            font-weight: bold;
+            color: #7ed957;
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .grade-text {
+            font-weight: bold;
+            color: #7ed957;
+            font-size: 32px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Certificate Details */
+        .certificate-details {
+            display: flex;
+            justify-content: space-around;
+            margin: 25px auto 0;
+            max-width: 900px;
+        }
+
+        .detail-item {
+            text-align: center;
+        }
+
+        .detail-label {
+            font-size: 12px;
+            color: #6b7280;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .detail-value {
+            font-size: 16px;
+            font-weight: bold;
+            color: #0a2540;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 5px;
+        }
+
+        /* Signatures */
+        .signatures {
+            display: flex;
+            justify-content: space-around;
+            margin: 35px auto 0;
+            max-width: 800px;
+        }
+
+        .signature-block {
+            text-align: center;
+            position: relative;
+        }
+
+        .signature-line {
+            width: 200px;
+            height: 70px;
+            border-bottom: 3px solid #0a2540;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .signature-image {
+            max-width: 180px;
+            max-height: 60px;
+            object-fit: contain;
+        }
+
+        .signature-stamp {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 80px;
+            height: 80px;
+            border: 3px solid #00a8e8;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            color: #0a2540;
+            text-align: center;
+            line-height: 1.2;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .signature-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #0a2540;
+            margin-top: 5px;
+        }
+
+        .signature-title {
+            font-size: 13px;
+            color: #6b7280;
+            margin-top: 3px;
+        }
+
+        /* Watermark */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 120px;
+            color: rgba(0, 168, 232, 0.03);
+            font-weight: bold;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Print/Close Buttons */
+        .action-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .action-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-print {
+            background: linear-gradient(135deg, #0a2540 0%, #00a8e8 100%);
+            color: white;
+        }
+
+        .btn-print:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 168, 232, 0.4);
+        }
+
+        .btn-close {
+            background: #6b7280;
+            color: white;
+        }
+
+        .btn-close:hover {
+            background: #4b5563;
+        }
+
+        @media print {
+            .action-buttons {
+                display: none;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .certificate-container {
+                margin: 0;
+                page-break-after: avoid;
+            }
+        }
+
+        @media screen {
+            body {
+                background: #e5e7eb;
+                padding: 30px 0;
+            }
+
+            .certificate-container {
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+        <button class="action-btn btn-close" onclick="window.close()">
+            ✕ Close
+        </button>
+        <button class="action-btn btn-print" onclick="window.print()">
+            🖨️ Print Certificate
+        </button>
+    </div>
+
+    <div class="certificate-container">
+        <!-- Border -->
+        <div class="certificate-border"></div>
+
+        <!-- Corner Decorations -->
+        <div class="corner-decoration corner-top-left"></div>
+        <div class="corner-decoration corner-top-right"></div>
+        <div class="corner-decoration corner-bottom-left"></div>
+        <div class="corner-decoration corner-bottom-right"></div>
+
+        <!-- Watermark -->
+        <div class="watermark">CERTIFIED</div>
+
+        <!-- Content -->
+        <div class="certificate-content">
+            <!-- Logo -->
+            <div class="certificate-logo">
+                <img src="logo.png" alt="Aariya SkillTech Academy">
+            </div>
+
+            <!-- Institute Name -->
+            <div class="institute-name">Aariya SkillTech Academy</div>
+            <div class="institute-tagline">Premier Computer Training Institute</div>
+
+            <!-- Certificate Title -->
+            <div class="certificate-title">Certificate</div>
+            <div class="certificate-subtitle">of Completion</div>
+
+            <!-- Student Name -->
+            <div class="student-name-label">This is to certify that</div>
+            <div class="student-name" id="studentName">Student Name</div>
+
+            <!-- Certificate Text -->
+            <div class="certificate-text">
+                has successfully completed the course in<br>
+                <span class="course-name" id="courseName">Course Name</span><br>
+                with grade <span class="grade-text" id="gradeBadge">A+</span>
+            </div>
+
+            <!-- Certificate Details -->
+            <div class="certificate-details">
+                <div class="detail-item">
+                    <div class="detail-label">Certificate No.</div>
+                    <div class="detail-value" id="certNumber">AST-CERT-2026-0001</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Roll Number</div>
+                    <div class="detail-value" id="rollNumber">AST-2026-0001</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Issue Date</div>
+                    <div class="detail-value" id="issueDate">January 7, 2026</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load certificate data from URL parameters
+        function loadCertificateData() {
+            const params = new URLSearchParams(window.location.search);
+            const certNumber = params.get('cert');
+            
+            if (certNumber) {
+                const certificates = JSON.parse(localStorage.getItem('certificates') || '{}');
+                const cert = certificates[certNumber];
+                
+                if (cert) {
+                    document.getElementById('studentName').textContent = cert.studentName;
+                    document.getElementById('courseName').textContent = cert.course;
+                    document.getElementById('gradeBadge').textContent = cert.grade;
+                    document.getElementById('certNumber').textContent = cert.certificateNumber;
+                    document.getElementById('rollNumber').textContent = cert.rollNumber;
+                    document.getElementById('issueDate').textContent = cert.issueDate;
+                    document.title = `Certificate - ${cert.studentName}`;
+                    
+                    // Load director signature if available
+                    const settings = JSON.parse(localStorage.getItem('instituteSettings') || '{}');
+                    if (settings.directorSignature) {
+                        const signatureImg = document.createElement('img');
+                        signatureImg.src = settings.directorSignature;
+                        signatureImg.className = 'signature-image';
+                        signatureImg.alt = 'Director Signature';
+                        document.getElementById('directorSignatureContainer').appendChild(signatureImg);
+                    }
+                }
+            } else {
+                // Load director signature even without cert number
+                const settings = JSON.parse(localStorage.getItem('instituteSettings') || '{}');
+                if (settings.directorSignature) {
+                    const signatureImg = document.createElement('img');
+                    signatureImg.src = settings.directorSignature;
+                    signatureImg.className = 'signature-image';
+                    signatureImg.alt = 'Director Signature';
+                    document.getElementById('directorSignatureContainer').appendChild(signatureImg);
+                }
+            }
+        }
+
+        // Load data when page loads
+        window.addEventListener('load', function() {
+            loadCertificateData();
+            // Auto print after brief delay
+            setTimeout(() => { window.print(); }, 800);
+        });
+    </script>
+</body>
+</html>

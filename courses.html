@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        git commit -m "Initial commit"        git commit -m "Initial commit"        <style>
+            .course-detail-card {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+            }
+            .course-detail-card.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - Aariya SkillTech Academy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Aariya SkillTech Academy Logo">
+                <span>Aariya SkillTech Academy</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="courses.html" class="active">Courses</a></li>
+                <li><a href="verify.html">Verify Admission</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="enroll.html" class="btn-enroll">Enroll Now</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Courses</h1>
+            <p>Choose from our wide range of industry-relevant programs</p>
+        </div>
+    </section>
+
+    <!-- Courses Filter -->
+    <section class="courses-section">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Courses</button>
+                <button class="filter-btn" data-filter="programming">Programming</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
+                <button class="filter-btn" data-filter="data">Data Science</button>
+                <button class="filter-btn" data-filter="design">Design</button>
+                <button class="filter-btn" data-filter="other">Other</button>
+            </div>
+
+            <div class="courses-container">
+                <!-- Computer Courses -->
+                <div class="course-detail-card" data-category="computer">
+                    <div class="course-header">
+                        <div class="course-icon-large">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <div class="course-badge">Popular</div>
+                    </div>
+                    <h3>Office Automation with Advance</h3>
+                    <p class="course-desc">Master MS Office, Excel, PowerPoint, Word, and advanced office automation tools</p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 3 Months</span>
+                        <span><i class="fas fa-signal"></i> Beginner to Advanced</span>
+                        <span><i class="fas fa-users"></i> 500+ Enrolled</span>
+                    </div>
+                    <div class="course-features">
+                        <div class="feature-item"><i class="fas fa-check"></i> Practical Training</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Certification</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Job Assistance</div>
+                    </div>
+                    <a href="enroll.html" class="btn btn-primary">Enroll Now</a>
+                </div>
+
+                <div class="course-detail-card" data-category="accounting">
+                    <div class="course-header">
+                        <div class="course-icon-large">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <div class="course-badge">Trending</div>
+                    </div>
+                    <h3>Tally Erp 9 with GST</h3>
+                    <p class="course-desc">Complete accounting with Tally ERP 9, GST filing, inventory management, and payroll</p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 3 Months</span>
+                        <span><i class="fas fa-signal"></i> Beginner to Intermediate</span>
+                        <span><i class="fas fa-users"></i> 450+ Enrolled</span>
+                    </div>
+                    <div class="course-features">
+                        <div class="feature-item"><i class="fas fa-check"></i> Live Projects</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Certification</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Job Assistance</div>
+                    </div>
+                    <a href="enroll.html" class="btn btn-primary">Enroll Now</a>
+                </div>
+
+                <div class="course-detail-card" data-category="accounting">
+                    <div class="course-header">
+                        <div class="course-icon-large">
+                            <i class="fas fa-file-invoice"></i>
+                        </div>
+                    </div>
+                    <h3>Tally Prime with GST</h3>
+                    <p class="course-desc">Latest Tally Prime software with GST, TDS, e-invoicing, and financial reporting</p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 3 Months</span>
+                        <span><i class="fas fa-signal"></i> Beginner to Intermediate</span>
+                        <span><i class="fas fa-users"></i> 400+ Enrolled</span>
+                    </div>
+                    <div class="course-features">
+                        <div class="feature-item"><i class="fas fa-check"></i> Live Projects</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Certification</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Job Assistance</div>
+                    </div>
+                    <a href="enroll.html" class="btn btn-primary">Enroll Now</a>
+                </div>
+
+                <!-- Web Development -->
+                <div class="course-detail-card" data-category="web">
+                    <div class="course-header">
+                        <div class="course-icon-large">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="course-badge">Hot</div>
+                    </div>
+                    <h3>Web Development HTML, CSS, JAVA Script</h3>
+                    <p class="course-desc">Complete frontend web development with HTML5, CSS3, JavaScript, and responsive design</p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 3 Months</span>
+                        <span><i class="fas fa-signal"></i> Beginner to Advanced</span>
+                        <span><i class="fas fa-users"></i> 520+ Enrolled</span>
+                    </div>
+                    <div class="course-features">
+                        <div class="feature-item"><i class="fas fa-check"></i> Live Projects</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Certification</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Job Assistance</div>
+                    </div>
+                    <a href="enroll.html" class="btn btn-primary">Enroll Now</a>
+                </div>
+
+                <!-- Design Courses -->
+                <div class="course-detail-card" data-category="design">
+                        <script>
+                        // Animate course cards on page load
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const cards = document.querySelectorAll('.course-detail-card');
+                            cards.forEach((card, i) => {
+                                setTimeout(() => {
+                                    card.classList.add('visible');
+                                }, i * 150);
+                            });
+                        });
+                        </script>
+                    <div class="course-header">
+                        <div class="course-icon-large">
+                            <i class="fas fa-image"></i>
+                        </div>
+                    </div>
+                    <h3>Photoshop</h3>
+                    <p class="course-desc">Adobe Photoshop for photo editing, graphic design, and digital art creation</p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 3 Months</span>
+                        <span><i class="fas fa-signal"></i> Beginner to Intermediate</span>
+                        <span><i class="fas fa-users"></i> 350+ Enrolled</span>
+                    </div>
+                    <div class="course-features">
+                        <div class="feature-item"><i class="fas fa-check"></i> Practical Training</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Certification</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Portfolio Building</div>
+                    </div>
+                    <a href="enroll.html" class="btn btn-primary">Enroll Now</a>
+                </div>
+
+                <div class="course-detail-card" data-category="design">
+                    <div class="course-header">
+                        <div class="course-icon-large">
+                            <i class="fas fa-pen-nib"></i>
+                        </div>
+                    </div>
+                    <h3>Corel Draw</h3>
+                    <p class="course-desc">Vector graphics design with CorelDRAW for logos, brochures, and illustrations</p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 3 Months</span>
+                        <span><i class="fas fa-signal"></i> Beginner to Intermediate</span>
+                        <span><i class="fas fa-users"></i> 280+ Enrolled</span>
+                    </div>
+                    <div class="course-features">
+                        <div class="feature-item"><i class="fas fa-check"></i> Practical Training</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Certification</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Portfolio Building</div>
+                    </div>
+                    <a href="enroll.html" class="btn btn-primary">Enroll Now</a>
+                </div>
+
+                <!-- Diploma Courses -->
+                <div class="course-detail-card" data-category="diploma">
+                    <div class="course-header">
+                        <div class="course-icon-large">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                    </div>
+                    <h3>DCA (Diploma in Computer Application)</h3>
+                    <p class="course-desc">Comprehensive computer fundamentals, MS Office, internet, and basic programming</p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 6-8 Months</span>
+                        <span><i class="fas fa-signal"></i> Beginner</span>
+                        <span><i class="fas fa-users"></i> 600+ Enrolled</span>
+                    </div>
+                    <div class="course-features">
+                        <div class="feature-item"><i class="fas fa-check"></i> Diploma Certificate</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Practical Training</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Job Assistance</div>
+                    </div>
+                    <a href="enroll.html" class="btn btn-primary">Enroll Now</a>
+                </div>
+
+                <div class="course-detail-card" data-category="diploma">
+                    <div class="course-header">
+                        <div class="course-icon-large">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="course-badge">Popular</div>
+                    </div>
+                    <h3>ADCA (Advanced DCA)</h3>
+                    <p class="course-desc">Advanced computer applications including programming, web design, and database management</p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 12 Months</span>
+                        <span><i class="fas fa-signal"></i> Intermediate</span>
+                        <span><i class="fas fa-users"></i> 550+ Enrolled</span>
+                    </div>
+                    <div class="course-features">
+                        <div class="feature-item"><i class="fas fa-check"></i> Advanced Diploma</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Live Projects</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Job Assistance</div>
+                    </div>
+                    <a href="enroll.html" class="btn btn-primary">Enroll Now</a>
+                </div>
+
+                <div class="course-detail-card" data-category="diploma">
+                    <div class="course-header">
+                        <div class="course-icon-large">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                    </div>
+                    <h3>ADIT (Advanced Diploma in IT)</h3>
+                    <p class="course-desc">Comprehensive IT diploma covering programming, networking, web development, and databases</p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 15 Months</span>
+                        <span><i class="fas fa-signal"></i> Advanced</span>
+                        <span><i class="fas fa-users"></i> 380+ Enrolled</span>
+                    </div>
+                    <div class="course-features">
+                        <div class="feature-item"><i class="fas fa-check"></i> Advanced Diploma</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Industry Projects</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Placement Support</div>
+                    </div>
+                    <a href="enroll.html" class="btn btn-primary">Enroll Now</a>
+                </div>
+
+                <!-- Government Certified -->
+                <div class="course-detail-card" data-category="government">
+                    <div class="course-header">
+                        <div class="course-icon-large">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="course-badge">Certified</div>
+                    </div>
+                    <h3>CCC (Course on Computer Concepts)</h3>
+                    <p class="course-desc">Government certified course on basic computer concepts, MS Office, and internet</p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 6 Months</span>
+                        <span><i class="fas fa-signal"></i> Beginner</span>
+                        <span><i class="fas fa-users"></i> 700+ Enrolled</span>
+                    </div>
+                    <div class="course-features">
+                        <div class="feature-item"><i class="fas fa-check"></i> Govt. Certificate</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Exam Preparation</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Job Ready</div>
+                    </div>
+                    <a href="enroll.html" class="btn btn-primary">Enroll Now</a>
+                </div>
+
+                <!-- CAD & Hardware -->
+                <div class="course-detail-card" data-category="cad">
+                    <div class="course-header">
+                        <div class="course-icon-large">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                    </div>
+                    <h3>AutoCAD</h3>
+                    <p class="course-desc">2D and 3D design with AutoCAD for architecture, mechanical, and civil engineering</p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 3 Months</span>
+                        <span><i class="fas fa-signal"></i> Beginner to Intermediate</span>
+                        <span><i class="fas fa-users"></i> 320+ Enrolled</span>
+                    </div>
+                    <div class="course-features">
+                        <div class="feature-item"><i class="fas fa-check"></i> Practical Training</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Certification</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Industry Projects</div>
+                    </div>
+                    <a href="enroll.html" class="btn btn-primary">Enroll Now</a>
+                </div>
+
+                <div class="course-detail-card" data-category="hardware">
+                    <div class="course-header">
+                        <div class="course-icon-large">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                    </div>
+                    <h3>Internet & Hardware</h3>
+                    <p class="course-desc">Computer hardware, networking, troubleshooting, and internet technologies</p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 3 Months</span>
+                        <span><i class="fas fa-signal"></i> Beginner to Intermediate</span>
+                        <span><i class="fas fa-users"></i> 290+ Enrolled</span>
+                    </div>
+                    <div class="course-features">
+                        <div class="feature-item"><i class="fas fa-check"></i> Hands-on Training</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Certification</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Job Support</div>
+                    </div>
+                    <a href="enroll.html" class="btn btn-primary">Enroll Now</a>
+                </div>
+
+                <!-- AI Course -->
+                <div class="course-detail-card" data-category="ai">
+                    <div class="course-header">
+                        <div class="course-icon-large">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="course-badge">New</div>
+                    </div>
+                    <h3>AI (Artificial Intelligence)</h3>
+                    <p class="course-desc">Introduction to AI, machine learning basics, ChatGPT, and AI tools for productivity</p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 30 Days</span>
+                        <span><i class="fas fa-signal"></i> Beginner</span>
+                        <span><i class="fas fa-users"></i> 450+ Enrolled</span>
+                    </div>
+                    <div class="course-features">
+                        <div class="feature-item"><i class="fas fa-check"></i> Quick Course</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Certification</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> AI Tools Training</div>
+                    </div>
+                    <a href="enroll.html" class="btn btn-primary">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Expert Instructors</h3>
+                    <p>Learn from industry professionals with years of real-world experience</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Industry Certification</h3>
+                    <p>Get recognized certifications that boost your career prospects</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Job Assistance</h3>
+                    <p>Placement support and career guidance to help you succeed</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Flexible Batches</h3>
+                    <p>Morning, evening, and weekend batches to suit your schedule</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Aariya SkillTech Academy is a leading computer training institute providing quality education and practical skills.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <div class="feature-item"><i class="fas fa-check"></i> Certification</div>
+                        <div class="feature-item"><i class="fas fa-check"></i> Job Assistance</div>
+                    </div>
+                    <a href="enroll.html" class="btn btn-primary">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Start Learning?</h2>
+            <p>Choose your course and begin your journey today</p>
+            <a href="enroll.html" class="btn btn-light">Enroll Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Aariya SkillTech Academy</h3>
+                    <p>Empowering students with cutting-edge technology skills and knowledge for a successful career in IT.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="verify.html">Verify Admission</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Popular Courses</h3>
+                    <ul>
+                        <li><a href="courses.html">Web Development</a></li>
+                        <li><a href="courses.html">Data Science</a></li>
+                        <li><a href="courses.html">Python Programming</a></li>
+                        <li><a href="courses.html">Digital Marketing</a></li>
+                        <li><a href="courses.html">Cloud Computing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> FCA- 2442, 22 Feet Road, Block-B, SGM Nagar, Faridabad (HR), Zip: 121001</li>
+                        <li><i class="fas fa-phone"></i> 9910481373</li>
+                        <li><a href="mailto:aariyaskilltech@gmail.com"><i class="fas fa-envelope"></i> aariyaskilltech@gmail.com</a></li>
+                        <li><i class="fas fa-clock"></i> Mon - Sat: 9AM - 9PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aariya SkillTech Academy. All Rights Reserved. | Managed by Mr. Roshan Singh</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Social Media Buttons -->
+    <div class="floating-social">
+        <a href="https://wa.me/919910481373" target="_blank" class="social-btn whatsapp" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.instagram.com/aariyaskilltech" target="_blank" class="social-btn instagram" title="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.youtube.com/@aariyaskilltech" target="_blank" class="social-btn youtube" title="YouTube">
+            <i class="fab fa-youtube"></i>
+        </a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
